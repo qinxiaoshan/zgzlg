@@ -1,0 +1,30 @@
+@import "./reset.scss";
+@import "./base.scss";
+
+/*通用*/
+#nprogress .bar{ background: #75adff !important; }
+.fullscreen{ min-width: 1000px; width: 100%; height: 100%; position: absolute !important; overflow: hidden; left: 0; top: 0; bottom: 0; }
+.fullscreen .main{ height: 100%; display: flex; position: relative; overflow: hidden; font-family:'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei'; z-index: 2; }
+.fullscreen .main .main-con{ flex: 1; padding: 20px; display: block; text-align: center;  }
+.contitle{ line-height: 50px; text-align: left; font-size: $font-size-20; margin-bottom: 5px; }
+
+.el-submenu .el-menu{ background: $color-background-white !important; font-size: $font-size-14; }
+.el-submenu .el-menu-item{ color: #888 !important; height: 44px; line-height: 44px; }
+.el-submenu .el-menu-item:hover{ background: $color-background-blue !important; }
+.el-submenu__title{ font-size: $font-size-14; }
+
+.zllist{ width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; }
+.zlcard{ min-width: 320px; margin-bottom: 15px; text-align: left; margin-right: 15px; flex: 1; }
+.zlcard:last-child{ align-self:flex-start; }
+.el-card__header{ padding: 5px 12px; }
+.el-card__body{ padding: 10px 15px; }
+.zlcard .zlcardhead{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  }
+.zlcard .zlcardhead .el-tag{ float: right; margin-top: 5px; margin-left: 5px; }
+.zlcard .icon{ font-size: 64px; margin-bottom: 10px; }
+.zlcard .zlcardheadtitle{ max-width: 60%; display: inline-block; vertical-align: top; line-height: 30px; margin-top: 5px; color: #3889ff; font-size: 15px;
+ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zlcardbody{ height:auto; }
+.zlcardbody p{ color: #999; line-height: 26px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zlcardbody p .icon-wenjian{ color: #ff577f; margin-right: 10px; }
+.zlcardfoot{ margin-top: 10px; }
+.zlcard .el-scrollbar__wrap{ overflow-x:hidden; }
