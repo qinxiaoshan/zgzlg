@@ -41,17 +41,17 @@ router.afterEach( ( to, from, next ) => {
   // 在即将进入新的页面组件前，关闭掉进度条
   NProgress.done()
   //百度统计
-  setTimeout(()=>{
-    var _hmt = _hmt || [];
-    (function() {
-      document.getElementById('baidu_a') && document.getElementById('baidu_a').remove();
-      var hm = document.createElement("script");
-      hm.src = "http://www.offcn.com/statics/js/bdtj_hlj.js";
-      hm.id = "baidu_a";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-  },0);
+  // setTimeout(()=>{
+  //   var _hmt = _hmt || [];
+  //   (function() {
+  //     document.getElementById('baidu_a') && document.getElementById('baidu_a').remove();
+  //     var hm = document.createElement("script");
+  //     hm.src = "http://www.offcn.com/statics/js/bdtj_hlj.js";
+  //     hm.id = "baidu_a";
+  //     var s = document.getElementsByTagName("script")[0]; 
+  //     s.parentNode.insertBefore(hm, s);
+  //   })();
+  // },0);
 } );
 
 /* eslint-disable no-new */

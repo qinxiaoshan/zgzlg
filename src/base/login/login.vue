@@ -150,7 +150,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
   .fullscreen{ background: url('../../common/img/bg3.jpg') no-repeat center; background-size: 100% 100%; }
   .logo{ display: flex; width: 240px; height: auto; border-radius: 5px; margin: 5px auto 6%; background: #fff; padding: 15px 25px; flex-wrap: wrap; align-items: center; }
   .logo img{ width: 100%; height: auto; display: block; }
