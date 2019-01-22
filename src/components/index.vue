@@ -105,7 +105,6 @@ export default{
 .indexh1{ font-size: 26px; letter-spacing: 5px; line-height: 40px; margin: 20px; }
 .indexyear{ display: block; }
 .indexhead .el-menu,.indexhead .el-menu--inline{ background: transparent !important; }
-.el-submenu .el-menu{ background: transparent !important; background-color: transparent !important; }
 .indexhead .tools{ width: 60px; height: 60px; font-size: 26px; text-align: center; line-height: 60px; color: #333; display: inline-block; }
 .indexhead .tools i{ font-size: 30px; }
 .indexhead .tools:active{ background: #334156; color: #fff; }

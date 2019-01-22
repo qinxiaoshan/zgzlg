@@ -1,27 +1,16 @@
-export const singer = state => state.singer
+const getters = {
+	getStorage: function(state) {
+		if (!state.userinfo.usertel) {
+			state.userinfo.usertel = JSON.parse(localStorage.getItem('zgzlgtel'))
+		}
+		if (!state.userinfo.username) {
+			state.userinfo.username = JSON.parse(localStorage.getItem('zgzlgname'))
+		}
+		return state.userinfo.username;
+		return state.userinfo.usertel;
+	}
+}	
 
-export const playing = state => state.playing
+export default getters
 
-export const fullScreen = state => state.fullScreen
-
-export const playlist = state => state.playlist
-
-export const sequenceList = state => state.sequenceList
-
-export const mode = state => state.mode
-
-export const currentIndex = state => state.currentIndex
-
-export const currentSong = (state) => {
-  return state.playlist[state.currentIndex] || {}
-}
-
-export const disc = state => state.disc
-
-export const topList = state => state.topList
-
-export const searchHistory = state => state.searchHistory
-
-export const playHistory = state => state.playHistory
-
-export const favoriteList = state => state.favoriteList
+//export const getStorage = state => state.singer

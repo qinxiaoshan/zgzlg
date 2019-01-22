@@ -1,7 +1,11 @@
 const state = {
-  username: 'x',
-  usertel: 'x',
-  userexam: 'x'
+  year: 2019,
+  userinfo: {
+    username: null,
+    usertel: null,
+    userexam: null
+  }
+  
 }
 
 export default state

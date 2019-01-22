@@ -1,15 +1,15 @@
 <template>
-  <div class="fullscreen" v-loading="loading">
+  <div class="fullscreen" ref="zgformsubmit" v-loading="loading">
     <el-row :gutter="20">
       <el-col :span="6" :offset="9" class="formbox">
         <span class="logo"><img src="@/common/img/logo.png" alt=""></span>
         <h3><span>快捷登录</span></h3>
         <el-form ref="loginform" :model="loginform" :rules="loginrules" :status-icon="true" width="100%">
-          <el-form-item prop="name">
-            <el-input v-model.trim="loginform.name" placeholder="请输入学员姓名" prefix-icon="el-icon-edit"></el-input>
+          <el-form-item prop="username">
+            <el-input v-model.trim="loginform.username" placeholder="请输入学员姓名" :readonly="yzming" prefix-icon="el-icon-edit"></el-input>
           </el-form-item>
-          <el-form-item prop="tel">
-            <el-input v-model.number.trim="loginform.tel" placeholder="请输入手机号码" prefix-icon="el-icon-mobile-phone"></el-input>
+          <el-form-item prop="usertel">
+            <el-input v-model.number.trim="loginform.usertel" placeholder="请输入手机号码" :readonly="yzming" prefix-icon="el-icon-mobile-phone"></el-input>
           </el-form-item>
           <el-form-item prop="yzm" v-if="fyzm">
             <el-input v-model.number.trim="loginform.yzm" placeholder="验证码">
@@ -18,15 +18,22 @@
             </el-input>
           </el-form-item>
           <el-form-item style="text-align: center;">
-            <el-button @click="submitloginform('loginform')" :loading="loading" type="primary" style="display: block; width: 100%; margin: 0px auto;">{{ loadbtntxt }}</el-button>
+            <el-button @click="submitloginform('loginform')" :loading="loading" :disabled="loginbtnstatus" type="primary" style="display: block; width: 100%; margin: 0px auto;">{{ loadbtntxt }}</el-button>
           </el-form-item>
         </el-form>
+        <form v-show="false" id="zgform" name="zgform" target="_self" action="http://hlj.offcn.com/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=280&amp;action=js&amp;siteid=1" onsubmit="document.charset='GBK';" method="post" accept-charset="gb2312">
+            <input type="text" name="info[name]" v-model.trim="loginform.username" id="name" placeholder="请输入姓名" value="">
+            <input type="text" name="info[tel]" v-model.trim="loginform.usertel" id="tel" placeholder="请输入手机号" value="">
+            <input type="text" name="info[yzm]" v-model.trim="loginform.yzm" id="yzm" placeholder="验证码" value="">
+            <input type="submit" name="dosubmit" id="dosubmit" value="提交">
+        </form>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import jq from 'common/js/jquery-1.9.1.min'
 export default {
   name: 'login',
   data: function () {
@@ -65,24 +72,38 @@ export default {
       if (!value) {
         return callback(new Error('请输入验证码'));
       }
+      setTimeout(() => {
+        if (!Number.isInteger(value)) {
+          return callback(new Error('验证码格式不正确'));
+        } else {
+          const yzmreg = /^\d{4}$/;
+          if (!yzmreg.test(value)) {
+            return callback(new Error('验证码格式不正确'));
+          }else{
+            callback();
+            this.loginbtnstatus = false;
+          }
+        }
+      }, 200);
     };
     return {
       loading: false,
+      loginbtnstatus: true,
       loadbtntxt: "OK 登录",
       fyzm:false,
       yzming: false,
       yzmtxt: "获取验证码",
-      yzmtime: 10,
+      yzmtime: 60,
       loginform:{
-        name: '',
-        tel: '',
+        username: '',
+        usertel: '',
         yzm: ''
       },
       loginrules: {
-        name: [
+        username: [
           { validator: validateName, trigger: 'blur' }
         ],
-        tel: [
+        usertel: [
           { validator: validateTel, trigger: 'blur' }
         ],
         yzm: [
@@ -91,59 +112,95 @@ export default {
       }
     }
   },
-  create:function(){
-    
+  created: function(){
+    this.$store.commit('getStorage')
+    this.isloginpd()
   },
   methods: {
+    isloginpd: function(){
+      var that = this
+      const usntel = this.$store.state.userinfo.usertel
+      if (usntel) {
+        that.$options.methods.haslogin(that)
+      }
+    },
+    haslogin: function(that){
+      that.loading = true;
+      that.loadbtntxt = "登录中..."
+      setTimeout(function(){
+        that.loading = false;
+        that.$message({
+          message: '登录成功',
+          type: 'success'
+        });
+        that.loadbtntxt = "OK 登录";
+        if (window.history.length <= 1) {
+          that.$router.push({ path:'/kszl/gjgwy/'});
+          return false
+        } else {
+          that.$router.go(-1)
+        }
+      }, 1500)
+    },
     submitloginform (){
-      this.$refs.loginform.validate((valid) => {
+      var that = this;
+      that.$refs.loginform.validate((valid) => {
          if(valid){
-            var that = this;
-            that.loading = true;
-            that.loadbtntxt = "登录中..."
-            setTimeout(function(){
-              that.loading = false;
-              that.$message('登录成功');
-              that.loadbtntxt = "OK 登录"
-              that.$router.push({ path:'/kszl/gjgwy/'});
-            }, 1500)
+            //网站表单提交
+            that.$store.dispatch('saveUserName',that.loginform.username);
+            that.$store.dispatch('saveUserTel',that.loginform.usertel);
+            if (that.fyzm) {
+              that.$options.methods.zgformaction()
+            }
+            that.$options.methods.haslogin(that)
          }else{
-            this.loading = false;
-            this.loadbtntxt = "OK 登录"
+            that.loading = false;
+            that.loadbtntxt = "OK 登录"
             console.log('用户名或手机号码错误')
          }
       })
     },
+    zgformaction: function($event){
+      //模拟提交
+      $("#dosubmit").trigger('click');
+    },
     yzmfieldpd: function(){
       var that = this;
-      that.$http.jsonp('http://hlj.offcn.com/index.php?m=formguide&c=index&a=formyzm&formid=258&mobile=' + that.loginform.tel + '&callback=?')
-      .then(function(response){
-        if (response.body.status == 1) {
-          that.fyzm = true;
-          that.$options.methods.hqyzm();
-        }else if (response.body.status == 2){
-          //console.log('已经注册，可直接登录')
-          return;
-        }
-      })
-      .catch(function(error){
-        console.log("请求错误" + error);
-      })
+      if (!that.fyzm) {
+        that.$http.jsonp('http://hlj.offcn.com/index.php?m=formguide&c=index&a=formyzm&formid=280&mobile=' + that.loginform.usertel + '&callback=?')
+        .then(function(response){
+          if (response.body.status == 1) {
+            that.fyzm = true;
+            that.$options.methods.hqyzm(that);
+          }else if (response.body.status == 2){
+            //console.log('已经注册，可直接登录')
+            that.fyzm = false;
+            that.loginbtnstatus = false;
+            return;
+          }
+        })
+        .catch(function(error){
+          //console.log("请求错误" + error);
+        })
+      }
     },
-    hqyzm: function(){
-      var that = this
-      that.yzming = true;
-      var aytotime = setInterval(function(){
-        if (that.yzmtime > 0) {
-          that.yzmtime --
-        }else{
-          clearInterval(aytotime)
-          that.yzming = false;
-          that.yzmtime = 10;
-          that.yzmtxt = "重新获取"
-          return false;
-        }
-      }, 1000)
+    hqyzm: function(tha){
+      var aytotime;
+      if (!tha.yzming) {
+        clearInterval(aytotime)
+        tha.yzming = true;
+        aytotime = setInterval(function(){
+          if (tha.yzmtime > 0) {
+            tha.yzmtime --
+          }else{
+            clearInterval(aytotime)
+            tha.yzming = false;
+            tha.yzmtime = 60;
+            tha.yzmtxt = "重新获取"
+            return;
+          }
+        }, 1000)
+      }
       
     }
   }

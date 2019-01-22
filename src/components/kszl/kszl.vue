@@ -6,10 +6,10 @@
       <LeftMenu></LeftMenu>
       
       <div class="main-con">
-        <el-scrollbar style="width: 100%; height: 100%;">
+        <el-scrollbar class="hiddenX" style="width: 100%; height: 100%;">
           <div class="fixedcontainer clearfix">
             <el-col :span="24" class="content-wrapper">
-              <transition name="fade" mode="out-in">
+              <transition name="slide-left" mode="out-in">
                 <router-view ></router-view>
               </transition>
             </el-col>

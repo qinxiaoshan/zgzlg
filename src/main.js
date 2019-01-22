@@ -40,6 +40,10 @@ router.beforeEach((to, from , next) => {
 router.afterEach( ( to, from, next ) => {
   // 在即将进入新的页面组件前，关闭掉进度条
   NProgress.done()
+  //修改页面title
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
   //百度统计
   // setTimeout(()=>{
   //   var _hmt = _hmt || [];
