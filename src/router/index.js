@@ -11,6 +11,7 @@ import login from 'base/login/login'
 //资料下载页面
 import gjgwy from 'components/kszl/children/gjgwy'
 import gjzj from 'components/kszl/children/gjzj'
+import sydw from 'components/kszl/children/sydw'
 import gqzp from 'components/kszl/children/gqzp'
 import hljgwy from 'components/kszl/children/hljgwy'
 import hljzj from 'components/kszl/children/hljzj'
@@ -19,6 +20,7 @@ import jszp from 'components/kszl/children/jszp'
 import nxs from 'components/kszl/children/nxs'
 import tgjs from 'components/kszl/children/tgjs'
 import yhzp from 'components/kszl/children/yhzp'
+import zjxf from 'components/kszl/children/zjxf'
 import zonghe from 'components/kszl/children/zonghe'
 
 Vue.use(Router)
@@ -27,11 +29,11 @@ Vue.use(ElementUI)
 export default new Router({
 	routes: [
 		{
-			path: '/',
-			redirect: '/index/'
+			path: '*',
+			redirect: '/'
 		},
 		{
-			path: '/index/',
+			path: '/',
 			component: index,
 			meta:{
 				title: '黑龙江中公资料馆_公职考试备考资料大全',
@@ -41,32 +43,9 @@ export default new Router({
 			name: '资料下载',
 			icon: 'el-icon-printer',
 			path: '/kszl/',
+			redirect: '/index/',
 			component: kszl,
 			children: [
-				{
-					path: '/kszl/gjgwy/',
-					name: '国家公务员',
-					component: gjgwy,
-					meta:{
-						title: '国家公务员资料馆_国家公务员笔试/面试备考资料下载',
-					}
-				},
-				{
-					path: '/kszl/gjzj/',
-					name: '国考公安岗',
-					component: gjzj,
-					meta:{
-						title: '国考公安岗资料馆_国考公安岗笔试/面试备考资料下载',
-					}
-				},
-				{
-					path: '/kszl/gqzp/',
-					name: '国企招聘',
-					component: gqzp,
-					meta:{
-						title: '国企招聘资料馆_国企招聘笔试/面试备考资料下载',
-					}
-				},
 				{
 					path: '/kszl/hljgwy/',
 					name: '黑龙江公务员',
@@ -76,11 +55,27 @@ export default new Router({
 					}
 				},
 				{
-					path: '/kszl/hljzj/',
-					name: '黑龙江省考招警',
-					component: hljzj,
+					path: '/kszl/gjgwy/',
+					name: '国家公务员',
+					component: gjgwy,
 					meta:{
-						title: '黑龙江省考招警资料馆_黑龙江省考招警笔试/面试备考资料下载',
+						title: '国家公务员资料馆_国家公务员笔试/面试备考资料下载',
+					}
+				},
+				// {
+				// 	path: '/kszl/sydw/',
+				// 	name: '事业单位',
+				// 	component: sydw,
+				// 	meta:{
+				// 		title: '事业单位资料馆_事业单位笔试/面试备考资料下载',
+				// 	}
+				// },
+				{
+					path: '/kszl/gqzp/',
+					name: '国企招聘',
+					component: gqzp,
+					meta:{
+						title: '国企招聘资料馆_国企招聘笔试/面试备考资料下载',
 					}
 				},
 				{
@@ -100,14 +95,6 @@ export default new Router({
 					}
 				},
 				{
-					path: '/kszl/nxs/',
-					name: '农信社',
-					component: nxs,
-					meta:{
-						title: '农信社资料馆_农信社笔试/面试备考资料下载',
-					}
-				},
-				{
 					path: '/kszl/tgjs/',
 					name: '特岗教师',
 					component: tgjs,
@@ -115,12 +102,28 @@ export default new Router({
 						title: '特岗教师资料馆_特岗教师笔试/面试备考资料下载',
 					}
 				},
+				// {
+				// 	path: '/kszl/nxs/',
+				// 	name: '农信社',
+				// 	component: nxs,
+				// 	meta:{
+				// 		title: '农信社资料馆_农信社笔试/面试备考资料下载',
+				// 	}
+				// },
+				// {
+				// 	path: '/kszl/yhzp/',
+				// 	name: '银行招聘',
+				// 	component: yhzp,
+				// 	meta:{
+				// 		title: '银行招聘资料馆_银行招聘笔试/面试备考资料下载',
+				// 	}
+				// },
 				{
-					path: '/kszl/yhzp/',
-					name: '银行招聘',
-					component: yhzp,
+					path: '/kszl/zjxf/',
+					name: '招警、消防',
+					component: zjxf,
 					meta:{
-						title: '银行招聘资料馆_银行招聘笔试/面试备考资料下载',
+						title: '招警、消防工程师资料馆_招警、消防工程师笔试/面试备考资料下载',
 					}
 				},
 				{

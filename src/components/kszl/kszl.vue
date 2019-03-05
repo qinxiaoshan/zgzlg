@@ -23,6 +23,7 @@
 
 <script>
 import Header from 'base/header/Header'
+import Footer from 'base/Footer'
 import LeftMenu from 'base/LeftMenu'
 export default{
   data: function(){
@@ -34,7 +35,7 @@ export default{
     
   },
   components:{
-    Header, LeftMenu
+    Header, LeftMenu, Footer
   }
 }
 </script>

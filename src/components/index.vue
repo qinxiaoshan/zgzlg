@@ -1,5 +1,5 @@
 <template>
-  <div v-on:mousemove="bgmove($event)" class="fullscreen">
+  <div class="fullscreen loginpage indexpage">
     <el-col :span="20" :offset="2" class="indexhead">
       <el-col :span="4" class="indextoolbox">
         <transition name="fade">
@@ -70,7 +70,7 @@ export default{
         that.logoactivetab = true
       },500)
       setTimeout(function(){
-        that.$router.push({path:'/kszl/'});
+        that.$router.push({path:'/kszl/hljgwy/'});
       },3000)
     }
   }
@@ -92,8 +92,7 @@ export default{
     line-height: 1.1;
   }
 }
-.indexlogocolor{ width: 100%; display: flex; text-align: center; justify-content:center;background: #ff416d url('../common/img/dsjb2.png') no-repeat center bottom; -webkit-background-clip: text; position: relative; overflow: hidden; animation: cityacolor 4s linear infinite alternate;
- -webkit-background-size: 200% 70%; background-size: 200% 70%;}
+.indexlogocolor{ width: 100%; display: flex; text-align: center; justify-content:center;background: #ff416d url('../common/img/dsjb2.png') no-repeat center bottom; -webkit-background-clip: text; position: relative; overflow: hidden; animation: cityacolor 4s linear infinite alternate; -webkit-background-size: 200% 70%; background-size: 200% 70%; background: none\0; background-image: none\0; -webkit-background-clip: border-box\0; }
 @keyframes cityacolor{
   0%{ background-position: left 0 bottom 0; }
   25%{ background-position: left 30% bottom 0; }
@@ -101,7 +100,7 @@ export default{
   75%{ background-position: left 90% bottom 0;}
   100%{background-position: left 120% bottom 0; }
 }
-.indexlogo span{ font-size: 220px; font-weight: 100; color: transparent; }
+.indexlogo span{ font-size: 220px; font-weight: 100; color: transparent; color: #ff416d\0; }
 .indexh1{ font-size: 26px; letter-spacing: 5px; line-height: 40px; margin: 20px; }
 .indexyear{ display: block; }
 .indexhead .el-menu,.indexhead .el-menu--inline{ background: transparent !important; }
@@ -128,5 +127,11 @@ left: 50%; margin-left: -25px; z-index: 1; transform: scale(1.1); animation: cir
   100%{ transform: translate3d(0px,70px,50px) scale(1.4);}
 }
 .fullscreenbg{ width: 100%; display: block; position: absolute; top: 0px; bottom: 0px; left: 0px; z-index: 1; opacity: 0.4;}
-.fullscreenbg img,.videoBoxVd{ width: 110%; height:110%; display: block; position: absolute; left: 0; top: 0;right: 0; z-index: 1;filter: blur(10px); -webkit-filter: blur(10px); }
+.fullscreenbg img,.videoBoxVd{ width: 110%; height:110%; display: block; position: absolute; left: -5%; top: -5%;right: 0; z-index: 1;filter: blur(50px); -webkit-filter: blur(50px); animation: logbg 3.6s linear infinite; }
+@keyframes logbg{
+  0%,100%{ transform: translate3d(0px,0px,0px); }
+  25%{ transform: translate3d(80px,0px,0px); }
+  50%{ transform: translate3d(80px,80px,0px); }
+  75%{ transform: translate3d(0px,80px,0px); }
+}
 </style>

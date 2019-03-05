@@ -7,8 +7,8 @@
 .hiddenALL .el-scrollbar__wrap{ overflow: hidden !important; }
 .el-table-filter__wrap{ margin-bottom: 0px !important; overflow-x:hidden; }
 
-#nprogress .bar{ background: #75adff !important; }
-.subtitle{ font-size: $font-size-18; line-height: 40px; color: #60758c; font-weight: bold; }
+#nprogress .bar{ background: $color-theme !important; }
+.subtitle{ font-size: $font-size-18; line-height: 40px; color: $color-theme; font-weight: bold; }
 .fullscreen{ min-width: 1000px; width: 100%; height: 100%; position: absolute !important; overflow: hidden; left: 0; top: 0; bottom: 0; }
 .fullscreen .main{ height: 100%; display: flex; position: absolute; overflow: hidden; font-family:'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei'; z-index: 2;
  top: 0; left: 0; padding-top: 60px; }
@@ -17,8 +17,11 @@
 
 .el-submenu .el-menu{ background: $color-background-white !important; font-size: $font-size-14; }
 .el-submenu .el-menu-item{ color: #888 !important; height: 44px; line-height: 44px; }
-.el-submenu .el-menu-item:hover{ background: $color-background-blue !important; }
+.el-submenu .el-menu-item:hover{ background: $color-theme-sub !important; color: #fff !important; }
 .el-submenu__title{ font-size: $font-size-14; }
+.el-menu--vertical{ background: #fff; font-size: $font-size-14; }
+.el-menu--vertical .el-menu-item{ color: #888 !important; height: 44px; line-height: 44px; }
+.el-menu--vertical .el-menu-item:hover{ background: $color-theme-sub !important; color: #fff !important; }
 .checkboxgroup{ margin: 5px 0px; display: block; }
 .checkboxgroup .labeltitle{ font-size: 14px; display: inline-block; margin-right: 10px; }
 .vardfootinfo{ font-size: 12px; color: #ccc; text-align: right; line-height: 30px; float: right; }
@@ -31,7 +34,7 @@
 .zlcard .zlcardhead{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  }
 .zlcard .zlcardhead .el-tag{ float: right; margin-top: 5px; margin-left: 5px; cursor: pointer; }
 .zlcard .icon{ font-size: 64px; margin-bottom: 10px; }
-.zlcard .zlcardheadtitle{ max-width: 60%; display: inline-block; vertical-align: top; line-height: 30px; margin-top: 5px; color: #3889ff; font-size: 15px;
+.zlcard .zlcardheadtitle{ max-width: 59%; display: inline-block; vertical-align: top; line-height: 30px; margin-top: 5px; color: $color-theme; font-size: 15px;
  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .zlcardbody{ height:auto; }
 .zlcardbody p{ color: #999; line-height: 26px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -62,7 +65,7 @@
 .slide-left-enter-active,
 .slide-left-leave-active {
   will-change: transform;
-  transition: all 500ms;
+  transition: all 300ms;
   position: absolute;
 }
 .slide-right-enter {
@@ -80,4 +83,38 @@
 .slide-left-leave-active {
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
+}
+.waptool{ display: none; }
+
+@media only screen and (min-width: 320px) and (max-width: 900px) {
+  .fullscreen{ width: 100%; min-width: 100%; height: auto; position: relative !important; }
+  .fullscreen.loginpage{ height: 100%; position: absolute !important; }
+  .el-header{ width: 100% !important; height: 50px !important; padding: 0px 5px !important; position: fixed !important; top: 0px; left: 0px; line-height: 50px !important; }
+  .el-header .logowidth{ width: 110px !important; }
+  .el-header .logowidth .logo{ height: 50px !important; }
+  .el-header .userinfo{ height: 50px !important; padding-right: 0px !important; width: 45% !important; white-space: nowrap; overflow: hidden; }
+  .el-header .userinfo-con img{ width: 30px !important; height: 30px !important; margin: 10px 3px !important; }
+  .fullscreen .main{ height: auto; position: relative; padding-top: 50px; }
+  .leftmenu{ position: fixed; height: 100%; left: 0px; top: 50px; z-index: 10; overflow: visible; }
+  .leftmenutoolbox .tools{ display: none; }
+  .waptool{ width: 40px; height: 40px; display: inline-block; position: fixed; bottom: 20px; left: 10px; z-index: 14; color: #333; font-size: 22px; text-align: center;
+   line-height: 40px; border-radius: 50%; background: rgba(0,0,0,0.2); }
+  .fullscreen .main .main-con{ width: 100%; padding: 10px 10px; box-sizing: border-box; flex: auto; }
+  .contitle{ line-height: 40px; }
+  .subtitle{ line-height: 30px; }
+  .zlcard{ width: 100%; min-width: 100%; margin-right: 0px; }
+  .indexhead{ width: 100%; margin-left: 0px; }
+  .webaddress{ font-size: 19px !important; line-height: 50px !important; margin-right: 10px; }
+  .indexpage .main{ width: 100%; margin-left: 0px; padding-top: 20px; }
+  .indexlogo{ padding-bottom: 20%; box-sizing: border-box; }
+  .indexlogo span{ font-size: 100px !important; }
+  .indexlogo strong{ font-size: 50px !important; letter-spacing: 2px !important; }
+  .indexh1{ font-size: 20px !important; letter-spacing: 0px; line-height: 30px !important; margin: 10px auto !important; }
+  .el-message-box{ max-width: 90%; }
+  .formbox{ max-width: 90%; }
+  .el-message{ max-width: 90%; }
+  .el-alert{ padding: 8px 0px; }
+  .el-alert__closebtn.is-customed{ top: auto !important; bottom: 10px; }
+  .indexlogocolor{ background: none !important; background-image: none !important; -webkit-background-clip: border-box  !important; }
+  .indexlogo span{ color: #ff416d !important; }
 }

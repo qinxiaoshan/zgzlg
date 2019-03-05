@@ -9,7 +9,7 @@ import kszllist from 'components/kszl/public/kszllist'
 export default {
 	data () {
 		return {
-			ajUrl: './static/json/kszl/gjgwy.json'
+			ajUrl: './static/json/kszl/zjxf.json'
 		}
 	},
 	mounted: function(){
