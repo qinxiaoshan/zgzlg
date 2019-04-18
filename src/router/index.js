@@ -62,14 +62,14 @@ export default new Router({
 						title: '国家公务员资料馆_国家公务员笔试/面试备考资料下载',
 					}
 				},
-				// {
-				// 	path: '/kszl/sydw/',
-				// 	name: '事业单位',
-				// 	component: sydw,
-				// 	meta:{
-				// 		title: '事业单位资料馆_事业单位笔试/面试备考资料下载',
-				// 	}
-				// },
+				{
+					path: '/kszl/sydw/',
+					name: '事业单位',
+					component: sydw,
+					meta:{
+						title: '事业单位资料馆_事业单位笔试/面试备考资料下载',
+					}
+				},
 				{
 					path: '/kszl/gqzp/',
 					name: '国企招聘',
@@ -110,14 +110,14 @@ export default new Router({
 				// 		title: '农信社资料馆_农信社笔试/面试备考资料下载',
 				// 	}
 				// },
-				// {
-				// 	path: '/kszl/yhzp/',
-				// 	name: '银行招聘',
-				// 	component: yhzp,
-				// 	meta:{
-				// 		title: '银行招聘资料馆_银行招聘笔试/面试备考资料下载',
-				// 	}
-				// },
+				{
+					path: '/kszl/yhzp/',
+					name: '银行招聘',
+					component: yhzp,
+					meta:{
+						title: '银行招聘资料馆_银行招聘笔试/面试备考资料下载',
+					}
+				},
 				{
 					path: '/kszl/zjxf/',
 					name: '招警、消防',

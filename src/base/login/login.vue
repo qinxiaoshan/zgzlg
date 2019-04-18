@@ -272,7 +272,7 @@ export default {
 
 <style scoped>
   .fullscreen{ background: url('../../common/img/bg4.jpg') no-repeat center; background-size:cover; }
-  .logo{ display: flex; width: 220px; height: auto; border-radius: 5px; margin: 0px auto 5px; background: #fff; padding: 10px 20px; flex-wrap: wrap; align-items: center; }
+  .logo{ display: flex; width: 220px; height: auto; border-radius: 5px; margin: 0px auto 5px; padding: 10px 20px; flex-wrap: wrap; align-items: center; }
   .logo img{ width: 100%; height: auto; display: block; }
   .formbox{ width: 320px; background: #fff url('../../common/img/formboxtop.jpg') no-repeat center top; padding: 120px 20px 20px; border-radius: 12px; box-shadow: 0px 15px 80px #eee; background-size: 100% auto; opacity: 0.85; filter: alpha(opacity=85 ); position: absolute; left: 50%; top: 50%; transform: translate3d(-50%,-50%,0); }
   .formbox form{ padding: 10px 6%; }

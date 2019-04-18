@@ -26,7 +26,9 @@
 				<el-card class="zlcard" shadow="never" v-for="(zlitem,index) in zlsearch" :key="index">
 					<div class="zlcardhead" slot="header">
 						<el-tooltip class="item" effect="dark" :content="zlitem.filename" placement="bottom-start">
-				            <span class="zlcardheadtitle">{{ zlitem.filename }}</span>
+			            	<span class="zlcardheadtitle">
+			            		{{ zlitem.filename }}
+			            	</span>
 				        </el-tooltip>
 			            <el-tag type="warning" size="small" v-if="zlitem.ksjd == '笔试'"><i class="el-icon-edit"></i>{{ zlitem.ksjd }}</el-tag>
 			            <el-tag type="danger" size="small" v-if="zlitem.ksjd == '面试'"><i class="el-icon-view"></i>{{ zlitem.ksjd }}</el-tag>
@@ -44,6 +46,7 @@
 						<el-button size="mini" @click.stop="zldownload(zlitem.fileaddress)"><i class="el-icon-download"></i>下载</el-button>
 						<span class="vardfootinfo" v-if="zlitem.downloadnum">{{ zlitem.downloadnum }}人已下载</span>
 					</div>
+					<div class="iconbadge" :class="zlitem.recommend" v-if="zlitem.recommend">{{zlitem.recommend}}</div>
 				</el-card>
 			</div>
 		</div>
